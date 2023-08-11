@@ -8,7 +8,7 @@ public class ControlFuncionTransicion {
     /// analiza si es una trasicion
 
     private int estadoPrincipal = 0, estado2 = 0;
-    private String cadena="";
+    private String cadena = "";
 
     private Map<Character, Integer> estadosPorCaracter = new HashMap<>();
 
@@ -20,7 +20,7 @@ public class ControlFuncionTransicion {
 
     private void asignacionsEstados() {
         estadosPorCaracter.put('\n', 0);
-        estadosPorCaracter.put('_', 1);
+        estadosPorCaracter.put('_', 3);
         estadosPorCaracter.put('.', 4);
         estadosPorCaracter.put('(', 5);
         estadosPorCaracter.put(')', 6);
@@ -29,6 +29,11 @@ public class ControlFuncionTransicion {
         estadosPorCaracter.put('=', 9);
         estadosPorCaracter.put('[', 10);
         estadosPorCaracter.put(']', 11);
+        estadosPorCaracter.put(':', 13);
+
+        for (char c : "+-*/%^".toCharArray()) {
+            estadosPorCaracter.put(c, 12);
+        }
 
     }
 
@@ -49,19 +54,20 @@ public class ControlFuncionTransicion {
         /// dependidno del caracter que se envia se asigna un valor a estado2 para luego
         /// comparrlo
         asignacionesEstados(caracter);
-        
+
         /// comienza comparacion de estado principal
 
         if (Character.isLetter(caracter)) {
 
-            if ((estadoPrincipal >= 0 && estadoPrincipal <= 3) || estadoPrincipal == 5
-                    || (estadoPrincipal >= 7 && estadoPrincipal <= 9)) {
+            if (estadoPrincipal == 0 || estadoPrincipal == 1 || estadoPrincipal == 3
+                    || (estadoPrincipal >= 5 && estadoPrincipal <= 9)
+                    || (estadoPrincipal >= 11 && estadoPrincipal <= 13)) {
 
                 if (!(estado2 == estadoPrincipal)) {
                     cambioEstado();
                 }
-                cadena+=caracter;
-                System.out.println(" cadena: "+cadena+ " estado: "+ estadoPrincipal);
+                cadena += caracter;
+                System.out.println(" cadena: " + cadena + " estado: " + estadoPrincipal);
                 return true;
             } else {
                 System.out.println(" error lexico");
@@ -70,14 +76,14 @@ public class ControlFuncionTransicion {
 
         } else if (Character.isDigit(caracter)) {
 
-            if (estadoPrincipal == 2 || estadoPrincipal == 4 || estadoPrincipal == 5
-                    || (estadoPrincipal >= 7 && estadoPrincipal <= 9)) {
+            if (estadoPrincipal == 2 || estadoPrincipal == 4 || (estadoPrincipal >= 6 && estadoPrincipal <= 8)
+                    || estadoPrincipal == 11 || estadoPrincipal == 12) {
 
                 if (!(estado2 == estadoPrincipal)) {
                     cambioEstado();
                 }
-                cadena+=caracter;
-                System.out.println(" cadena: "+cadena+ " estado: "+ estadoPrincipal);
+                cadena += caracter;
+                System.out.println(" cadena: " + cadena + " estado: " + estadoPrincipal);
                 return true;
             } else {
                 System.out.println(" error lexico");
@@ -87,13 +93,13 @@ public class ControlFuncionTransicion {
         } else if (caracter == '_') {
 
             if (estadoPrincipal == 0 || estadoPrincipal == 1 || estadoPrincipal == 3
-                    || estadoPrincipal == 7 || estadoPrincipal == 8) {
+                    || estadoPrincipal == 7 || estadoPrincipal == 8 || estadoPrincipal == 13) {
 
                 if (!(estado2 == estadoPrincipal)) {
                     cambioEstado();
                 }
-                cadena+=caracter;
-                System.out.println(" cadena: "+cadena+ " estado: "+ estadoPrincipal);
+                cadena += caracter;
+                System.out.println(" cadena: " + cadena + " estado: " + estadoPrincipal);
                 return true;
             } else {
                 System.out.println(" error lexico");
@@ -106,8 +112,8 @@ public class ControlFuncionTransicion {
                 if (!(estado2 == estadoPrincipal)) {
                     cambioEstado();
                 }
-                cadena+=caracter;
-                System.out.println(" cadena: "+cadena+ " estado: "+ estadoPrincipal);
+                cadena += caracter;
+                System.out.println(" cadena: " + cadena + " estado: " + estadoPrincipal);
                 return true;
             } else {
                 System.out.println(" error lexico");
@@ -116,14 +122,14 @@ public class ControlFuncionTransicion {
 
         } else if (caracter == '(') {
 
-            if (estadoPrincipal == 1
-                    || (estadoPrincipal >= 5 && estadoPrincipal <= 9)) {
+            if (estadoPrincipal == 1 || estadoPrincipal == 2
+                    || (estadoPrincipal >= 5 && estadoPrincipal <= 8)) {
 
                 if (!(estado2 == estadoPrincipal)) {
                     cambioEstado();
                 }
-                cadena+=caracter;
-                System.out.println(" cadena: "+cadena+ " estado: "+ estadoPrincipal);
+                cadena += caracter;
+                System.out.println(" cadena: " + cadena + " estado: " + estadoPrincipal);
 
                 return true;
             } else {
@@ -133,14 +139,15 @@ public class ControlFuncionTransicion {
 
         } else if (caracter == ')') {
 
-            if (estadoPrincipal == 1 || estadoPrincipal == 2
-                    || (estadoPrincipal >= 5 && estadoPrincipal <= 8)) {
+            if ((estadoPrincipal >= 1 && estadoPrincipal <= 3)
+                    || (estadoPrincipal >= 5 && estadoPrincipal <= 8) || estadoPrincipal == 12
+                    || estadoPrincipal == 13) {
 
                 if (!(estado2 == estadoPrincipal)) {
                     cambioEstado();
                 }
-                cadena+=caracter;
-                System.out.println(" cadena: "+cadena+ " estado: "+ estadoPrincipal);
+                cadena += caracter;
+                System.out.println(" cadena: " + cadena + " estado: " + estadoPrincipal);
                 return true;
             } else {
                 System.out.println(" error lexico");
@@ -149,45 +156,80 @@ public class ControlFuncionTransicion {
 
         } else if (caracter == '\"') {
 
-            if (estadoPrincipal == 5
-                    || (estadoPrincipal >= 7 && estadoPrincipal <= 9)) {
+            if ((estadoPrincipal >= 1 && estadoPrincipal <= 13)) {
 
                 if (!(estado2 == estadoPrincipal)) {
                     cambioEstado();
                 }
-                cadena+=caracter;
-                System.out.println(" cadena: "+cadena+ " estado: "+ estadoPrincipal);
+                cadena += caracter;
+                System.out.println(" cadena: " + cadena + " estado: " + estadoPrincipal);
                 return true;
             } else {
                 System.out.println(" error lexico");
                 return false;
             }
 
-        } else if (caracter == '=') {
+        } else if (caracter == '\'') {
+
+            if ((estadoPrincipal >= 1 && estadoPrincipal <= 13)) {
+
+                if (!(estado2 == estadoPrincipal)) {
+                    cambioEstado();
+                }
+                cadena += caracter;
+                System.out.println(" cadena: " + cadena + " estado: " + estadoPrincipal);
+                return true;
+            } else {
+                System.out.println(" error lexico");
+                return false;
+            }
+
+        }else if (caracter == '=') {
 
             if (estadoPrincipal == 1 || estadoPrincipal == 2 || (estadoPrincipal >= 5 && estadoPrincipal <= 9)) {
 
                 if (!(estado2 == estadoPrincipal)) {
                     cambioEstado();
                 }
-                cadena+=caracter;
-                System.out.println(" cadena: "+cadena+ " estado: "+ estadoPrincipal);
+                cadena += caracter;
+                System.out.println(" cadena: " + cadena + " estado: " + estadoPrincipal);
                 return true;
             } else {
                 System.out.println(" error lexico");
                 return false;
             }
 
+        } else if (caracter == '[') {
+
+            if (estadoPrincipal == 1 || estadoPrincipal == 2 || (estadoPrincipal >= 5 && estadoPrincipal <= 9)) {
+
+                if (!(estado2 == estadoPrincipal)) {
+                    cambioEstado();
+                }
+                cadena += caracter;
+                System.out.println(" cadena: " + cadena + " estado: " + estadoPrincipal);
+                return true;
+            } else {
+                System.out.println(" error lexico");
+                return false;
+            }
+
+        } else if (caracter == ']') {
+
+        } else if (caracter == ':') {
+
+        } else {
+
         }
+
         return false;
     }
 
     public void cambioEstado() {
-        System.out.println(" cambio de estado, cadena acumulada: "+cadena); 
+        System.out.println(" cambio de estado, cadena acumulada: " + cadena);
         estadoPrincipal = estado2;
-        cadena="";
+        cadena = "";
         cambioEstado = true;
-        
     }
 
     public boolean getCambioEstado() {
