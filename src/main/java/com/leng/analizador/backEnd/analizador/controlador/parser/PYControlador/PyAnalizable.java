@@ -1,6 +1,11 @@
 package com.leng.analizador.backEnd.analizador.controlador.parser.PYControlador;
 
 public class PyAnalizable {
+
+
+    public ControlFuncionTransicion controlFuncionTransicion = new ControlFuncionTransicion();
+
+
     // desminuzar cada cadena, saber la linea y la comuna de cada caracter
     private int linea;
     private int columna;
@@ -20,13 +25,13 @@ public class PyAnalizable {
             
             char caracterActual = contenido.charAt(indice);
             if (caracterActual != '\n') {
-                //// se envia a Controlador de función de transición
-
                 columna++;
             }else {
                 linea++;
             }
-                
+            //// se envia a Controlador de función de transición
+            controlFuncionTransicion.analizar(caracterActual); 
+          //  System.out.println("el envio: "+ caracterActual);               
                         
         }
     }
