@@ -10,8 +10,9 @@ import java.awt.Color;
 
 public class Panel3 extends JPanel {
 
+    //*// panel del los botones  */
     private ConstructorBotton[] botones = new ConstructorBotton[6];
-    private String[] etiquetas = {"Cargar", "Grafico", "Ayuda", "Acerca", "Play", " Limpiar"};
+    private String[] etiquetas = {"Archivo", "Grafico", "Ayuda", "Acerca", "Play", " Limpiar"};
 
     private AccionBoton accionBoton = new AccionBoton();
 
@@ -21,10 +22,10 @@ public class Panel3 extends JPanel {
         
         this.setLayout(null);
         this.setBounds(0, 0, 600, 40);
-        this.setVisible(true);
         this.setBackground(color);
 
         setcomponentes();
+        this.setVisible(true);
 
     }
 
