@@ -1,6 +1,5 @@
 package com.leng.analizador.frontEnd.compnents;
 
-
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
@@ -17,7 +16,6 @@ public class ConstructorBotton extends javax.swing.JButton {
         super(texto);        
         Border border = BorderFactory.createLineBorder(colorBorder);
         Border margin = new EmptyBorder(15, 30, 15, 30);
-
 
         Font fuentePersonalizada = new Font("Arial", Font.PLAIN, 10); 
         

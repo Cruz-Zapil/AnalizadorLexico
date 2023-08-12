@@ -12,6 +12,9 @@ public class VentanPrincipal extends javax.swing.JFrame{
 
     private void initComponents(){
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        
+        this.setVisible(true);
+
         setTitle("Analizador Léxico");
         setResizable(false);
         setSize(600 , 700);
