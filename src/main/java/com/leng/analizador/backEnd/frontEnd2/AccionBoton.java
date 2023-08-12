@@ -3,7 +3,6 @@ package com.leng.analizador.backEnd.frontEnd2;
 import java.awt.event.ActionEvent;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.swing.JTextArea;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import com.leng.analizador.backEnd.analizador.controlador.analizador.Analizable;
@@ -11,7 +10,7 @@ import com.leng.analizador.frontEnd.compnents.ConstructorBotton;
 
 public class AccionBoton implements java.awt.event.ActionListener {
 
-    private JTextArea areaText;
+
     private Analizable miArchivo = new Analizable();
     private JFileChooser miBuscador;
 
@@ -93,7 +92,7 @@ public class AccionBoton implements java.awt.event.ActionListener {
 
             textoLeido = miArchivo.leerArchivoExterior(miBuscador.getSelectedFile().getAbsolutePath());
             System.out.println(miBuscador.getSelectedFile().getAbsolutePath());
-            areaText.setText(textoLeido);
+          // areaText.setText(textoLeido);
         }
 
     }

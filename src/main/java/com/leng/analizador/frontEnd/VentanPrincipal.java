@@ -6,6 +6,8 @@ public class VentanPrincipal extends javax.swing.JFrame{
     
     Panel1 panel;
 
+    
+
     public VentanPrincipal(){
         initComponents();
     }
@@ -20,15 +22,16 @@ public class VentanPrincipal extends javax.swing.JFrame{
         setLocationRelativeTo(null);
         this.setLayout(null);
         
-        /// agregando panel
-      //  panel = new Panel1( Color.ORANGE , Color.white);
-      //  this.add(panel);
+      /// agregando panel
+        panel = new Panel1( Color.ORANGE , Color.white);
+        this.add(panel);
         
         Panel3 panel3 = new Panel3( Color.white , Color.white);
         this.add(panel3);
         
         this.setVisible(true);
     }
+
 
     
 }

@@ -21,10 +21,6 @@ public class Analizable {
     private String hola = "hola_mundoc==1  . que.mas";
 
 
-
-
-
-
     String RUTA;
     String rutaB = "";
     private String rutaFichero = "src/main/java/com/practica2/ficheros/";
@@ -56,33 +52,6 @@ public class Analizable {
         return contenido;
     }
 
-    public String leerArchivosIterior(String ruta){
-        System.out.println(rutaFichero+ruta);
-        FileReader lector = null;
-        BufferedReader br = null;
-      
-
-        String lectura = " ";
-        String contenido = " ";
-
-        try {
-            lector = new FileReader(rutaFichero+ruta);
-            br = new BufferedReader(lector);
-            while ((lectura = br.readLine()) != null) {
-                contenido += lectura + "\n";
-
-            }
-            br.close();
-            lector.close();
-        } catch (FileNotFoundException e) {
-            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.WARNING_MESSAGE);
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, e, " Error", JOptionPane.WARNING_MESSAGE);
-        }
-        return contenido;
-
-    }
-
 
     public void escribirArchivo(String texto, String ruta, boolean reescribir) {
         System.out.println(" rutas firchero "+rutaFichero+ruta);
@@ -108,17 +77,7 @@ public class Analizable {
 
 
 
-    public void almacenamiento() {
-        
-        // Dividir la cadena en líneas utilizando el carácter de salto de línea
-     //   String[] lineas = prueba.split("\n");
-
-        // Almacenar cada línea en un ArrayList
-       // List<String> lineasList = new ArrayList<>(Arrays.asList(lineas));
-       // int a=0;
-       // a = 1+1;
-
-       
+    public void almacenamiento() {       
 
         new PyAnalizable(hola).avanzar();
     }
