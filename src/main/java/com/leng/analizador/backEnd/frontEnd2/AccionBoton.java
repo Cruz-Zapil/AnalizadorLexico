@@ -1,11 +1,14 @@
 package com.leng.analizador.backEnd.frontEnd2;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import com.leng.analizador.backEnd.analizador.controlador.analizador.Analizable;
+import com.leng.analizador.frontEnd.Panel1;
+import com.leng.analizador.frontEnd.VentanPrincipal;
 import com.leng.analizador.frontEnd.compnents.ConstructorBotton;
 
 public class AccionBoton implements java.awt.event.ActionListener {
@@ -30,9 +33,12 @@ public class AccionBoton implements java.awt.event.ActionListener {
                 System.out.println(" Cargando ");
 
                 message();
+                VentanPrincipal.addPanel(new Panel1(null, null));
 
             } else if (botones.getText().equals("Grafico")) {
                 System.out.println("Grafico ");
+
+                VentanPrincipal.addPanel(new Panel1(Color.yellow, Color.red));
 
             } else if (botones.getText().equals("Ayuda")) {
 

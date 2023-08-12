@@ -5,10 +5,12 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+import com.leng.analizador.frontEnd.compnents.ConstructorPanel;
+
 import java.awt.Font;
 import java.awt.Color;
 
-public class Panel1 extends JPanel {
+public class Panel1 extends ConstructorPanel {
 
     //// panel de lot text area 
 
@@ -16,21 +18,11 @@ public class Panel1 extends JPanel {
     private JTextArea areaText, areaTextError;
     private JLabel titulo;
 
-    public Panel1(Color color/* , String etiqueta */, Color color2) {
-        this.setLayout(null);
-        this.setBounds(0, 40, 600, 660);
-        this.setBackground(color);
-        
-        titulo = new JLabel();
-        titulo.setFont(new Font("Arial", Font.BOLD, 20));
-        titulo.setForeground(color);
-        titulo.setHorizontalAlignment(JLabel.CENTER);
-        titulo.setBounds(50, 20, 500, 30);
-        this.add(titulo);
-        
+    public Panel1(Color color, Color color2) {
+        super(color, color2);
+      
         setcomponentes1();
-        this.setVisible(true);
-
+        System.out.println(" se esta creando un panel ");
     }
 
     public void setcomponentes1() {

@@ -2,36 +2,37 @@ package com.leng.analizador.frontEnd;
 
 import java.awt.Color;
 
-public class VentanPrincipal extends javax.swing.JFrame{
-    
-    Panel1 panel;
+import javax.swing.JPanel;
 
-    
+public class VentanPrincipal extends javax.swing.JFrame {
 
-    public VentanPrincipal(){
-        initComponents();
-    }
+    private static JPanel panelCentral;
 
-    private void initComponents(){
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        
-        
-        setTitle("Analizador Léxico");
-        setResizable(false);
-        setSize(600 , 700);
-        setLocationRelativeTo(null);
+    static Panel3 panel3;
+
+    public VentanPrincipal() {
+
+        panelCentral = new JPanel();
+        panel3 = new Panel3(Color.white, Color.white);
+
+        this.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        this.setTitle("Analizador Léxico");
+        this.setSize(600, 700);
         this.setLayout(null);
-        
-      /// agregando panel
-        panel = new Panel1( Color.ORANGE , Color.white);
-        this.add(panel);
-        
-        Panel3 panel3 = new Panel3( Color.white , Color.white);
-        this.add(panel3);
-        
+        this.setResizable(false);
         this.setVisible(true);
+
+        panelCentral.setBounds(0, 0, 600, 660);
+        this.add(panelCentral);
+        this.add(panel3);
+
     }
 
+    public static void addPanel(JPanel panel1) {
 
-    
+        panelCentral.removeAll();
+        panelCentral.add(panel1);
+        panelCentral.repaint();
+        panelCentral.revalidate();
+    }
 }
