@@ -2,23 +2,15 @@ package com.leng.analizador.backEnd.frontEnd2;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
-import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.swing.filechooser.FileNameExtensionFilter;
-
-import com.leng.analizador.backEnd.analizador.controlador.analizador.Analizable;
 import com.leng.analizador.frontEnd.Panel1;
+import com.leng.analizador.frontEnd.Panel1Escritura;
 import com.leng.analizador.frontEnd.VentanPrincipal;
 import com.leng.analizador.frontEnd.compnents.ConstructorBotton;
 
 public class AccionBoton implements java.awt.event.ActionListener {
 
-
-    private Analizable miArchivo = new Analizable();
-    private JFileChooser miBuscador;
-
-    public AccionBoton() {
-    }
+    private Panel1 panel1= new Panel1(Color.DARK_GRAY, null);
 
     @Override
     public void actionPerformed(ActionEvent event) {
@@ -33,12 +25,12 @@ public class AccionBoton implements java.awt.event.ActionListener {
                 System.out.println(" Cargando ");
 
                 message();
-                VentanPrincipal.addPanel(new Panel1(null, null));
+                VentanPrincipal.addPanel(panel1);
 
             } else if (botones.getText().equals("Grafico")) {
                 System.out.println("Grafico ");
 
-                VentanPrincipal.addPanel(new Panel1(Color.yellow, Color.red));
+                VentanPrincipal.addPanel(panel1);
 
             } else if (botones.getText().equals("Ayuda")) {
 
@@ -49,10 +41,16 @@ public class AccionBoton implements java.awt.event.ActionListener {
             } else if (botones.getText().equals("Play")) {
 
                 /// aqui deberia de leer todo el archivo del area text
-                System.out.println(" play");
+               // System.out.println(" play: "+  panel1.getEscritura());
+         
+                System.out.println(" el texto obtenido es: "+ Panel1Escritura.getText());
+                Panel1Escritura.setTextColor("hola", Color.red);
+
+               
 
             } else if (botones.getText().equals("Limpiar")) {
                 System.out.println("Limpiar");
+                Panel1Escritura.setTextColor(" que tal", Color.GREEN);
 
             }
 
@@ -75,7 +73,7 @@ public class AccionBoton implements java.awt.event.ActionListener {
         if (choice == 0) {
             // Acción para "Abrir Archivo"
             System.out.println("Abrir Archivo seleccionado.");
-            fileChoser();
+          //  fileChoser();
         } else if (choice == 1) {
             // Acción para "Nuevo"
             System.out.println("Nuevo seleccionado.");
@@ -85,21 +83,5 @@ public class AccionBoton implements java.awt.event.ActionListener {
         }
     }
 
-    public void fileChoser() {
-
-        String textoLeido;
-        miBuscador = new JFileChooser(".");
-        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos de Python (.py)", "py");
-
-        miBuscador.setFileFilter(filtro);
-
-        int valor = miBuscador.showOpenDialog(miBuscador);
-        if (valor == JFileChooser.APPROVE_OPTION) {
-
-            textoLeido = miArchivo.leerArchivoExterior(miBuscador.getSelectedFile().getAbsolutePath());
-            System.out.println(miBuscador.getSelectedFile().getAbsolutePath());
-          // areaText.setText(textoLeido);
-        }
-
-    }
+ 
 }

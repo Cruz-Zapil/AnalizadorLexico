@@ -4,11 +4,13 @@ import java.awt.Color;
 
 import javax.swing.JPanel;
 
+import com.leng.analizador.frontEnd.compnents.ConstructorPanel;
+
 public class VentanPrincipal extends javax.swing.JFrame {
 
     private static JPanel panelCentral;
 
-    static Panel3 panel3;
+     Panel3 panel3;
 
     public VentanPrincipal() {
 
@@ -22,13 +24,14 @@ public class VentanPrincipal extends javax.swing.JFrame {
         this.setResizable(false);
         this.setVisible(true);
 
-        panelCentral.setBounds(0, 0, 600, 660);
+        panelCentral.setBounds(0, 40, 600, 660);
+         panelCentral.setLayout(null);
         this.add(panelCentral);
         this.add(panel3);
 
     }
 
-    public static void addPanel(JPanel panel1) {
+    public static void addPanel(ConstructorPanel panel1) {
 
         panelCentral.removeAll();
         panelCentral.add(panel1);
