@@ -2,36 +2,40 @@ package com.leng.analizador.frontEnd;
 
 import java.awt.Color;
 
-public class VentanPrincipal extends javax.swing.JFrame{
+import javax.swing.JPanel;
 
-    Panel1 panel;
+import com.leng.analizador.frontEnd.compnents.ConstructorPanel;
 
+public class VentanPrincipal extends javax.swing.JFrame {
 
+    private static JPanel panelCentral;
 
-    public VentanPrincipal(){
-        initComponents();
-    }
+     Panel3 panel3;
 
-    private void initComponents(){
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+    public VentanPrincipal() {
 
-        
-        setTitle("Analizador Léxico");
-        setResizable(false);
-        setSize(600 , 700);
-        setLocationRelativeTo(null);
+        panelCentral = new JPanel();
+        panel3 = new Panel3(Color.white, Color.white);
+
+        this.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        this.setTitle("Analizador Léxico");
+        this.setSize(600, 700);
         this.setLayout(null);
+        this.setResizable(false);
+        this.setVisible(true);
 
-        /// agregando panel
-        panel = new Panel1( Color.ORANGE , Color.white);
-        this.add(panel);
-
-        Panel3 panel3 = new Panel3( Color.white , Color.white);
+        panelCentral.setBounds(0, 40, 600, 660);
+         panelCentral.setLayout(null);
+        this.add(panelCentral);
         this.add(panel3);
 
-        this.setVisible(true);
     }
 
+    public static void addPanel(ConstructorPanel panel1) {
 
-
+        panelCentral.removeAll();
+        panelCentral.add(panel1);
+        panelCentral.repaint();
+        panelCentral.revalidate();
+    }
 }
