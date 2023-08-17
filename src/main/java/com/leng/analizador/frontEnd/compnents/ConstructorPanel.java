@@ -10,14 +10,14 @@ public class ConstructorPanel extends JPanel {
 
     private JLabel titulo;
 
-        public ConstructorPanel(Color color/* , String etiqueta */, Color color2) {
+        public ConstructorPanel(Color colorFondo/* , String etiqueta */) {
         this.setLayout(null);
-        this.setBounds(0, 40, 600, 660);
-        this.setBackground(color);
+        this.setBounds(0, 0, 600, 660);
+        this.setBackground(colorFondo);
         
         titulo = new JLabel();
         titulo.setFont(new Font("Arial", Font.BOLD, 20));
-        titulo.setForeground(color);
+     //   titulo.setForeground(color);
         titulo.setHorizontalAlignment(JLabel.CENTER);
         titulo.setBounds(50, 20, 500, 30);
         this.add(titulo);

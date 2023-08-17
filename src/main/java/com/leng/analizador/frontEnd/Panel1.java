@@ -1,7 +1,6 @@
 package com.leng.analizador.frontEnd;
 
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
@@ -18,8 +17,8 @@ public class Panel1 extends ConstructorPanel {
     private JTextArea  areaTextError;
     private JLabel titulo;
 
-    public Panel1(Color color, Color color2) {
-        super(color, color2);
+    public Panel1() {
+        super(new Color(245, 245, 220));
       
         panel1Escritura = new Panel1Escritura();
         setcomponentes1();
@@ -27,18 +26,6 @@ public class Panel1 extends ConstructorPanel {
     }
 
     public void setcomponentes1() {
-        /*
-        areaText = new JTextArea();
-        areaText.setBounds(50, 30, 500, 370);
-        areaText.setBackground(Color.black);
-        areaText.setFont(new Font("Arial", Font.CENTER_BASELINE , 15));
-        areaText.setForeground(Color.white);
-        areaText.setEditable(true);
-        
-        // Configurar el panel de desplazamiento para el área de texto principal
-        JScrollPane scrollBar = new JScrollPane(areaText);
-        scrollBar.setBounds(50, 30, 500, 370);
-        */
 
         areaTextError = new JTextArea();
         areaTextError.setBounds(50, 430, 500, 150);
@@ -56,14 +43,13 @@ public class Panel1 extends ConstructorPanel {
         this.add(areaTextError);
         this.add(scrollBarError);
     }
+    
 /*
-
     public String getEscritura(){
         return panel1Escritura.getEscritura();
     }
     public void setEscritura(String text){
-        panel1Escritura.setEscritura(text, Color.red);
+        panel1Escritura.setText(text);
     }
-
 */
 }

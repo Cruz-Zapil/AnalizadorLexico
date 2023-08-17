@@ -12,22 +12,22 @@ import java.awt.event.AdjustmentListener;
 
 public class Panel1Escritura extends JPanel {
 
-    private static JTextPane textAreaNumber;
+    private static JTextPane textAreaImput;
 
     public Panel1Escritura() {
 
         this.setLayout(new BorderLayout());
 
         // Crear dos JTextAreas
-        textAreaNumber = new JTextPane();
+        textAreaImput = new JTextPane();
 
         // Crear un JScrollPane
         JScrollPane scrollPane = new JScrollPane();
 
         // Agregar los JTextAreas al JScrollPane
-        scrollPane.setViewportView(textAreaNumber);
-        scrollPane.setRowHeaderView(new LineNumberTextPane(textAreaNumber));
-        addScrollSync(scrollPane, textAreaNumber);
+        scrollPane.setViewportView(textAreaImput);
+        scrollPane.setRowHeaderView(new LineNumberTextPane(textAreaImput));
+        addScrollSync(scrollPane, textAreaImput);
 
         // Agregar el JScrollPane al panel
         this.add(scrollPane);
@@ -49,16 +49,16 @@ public class Panel1Escritura extends JPanel {
     }
 
     public static void setText(String text) {
-        textAreaNumber.setText(text);
+        textAreaImput.setText(text);
     }
 
     public static String getText() {
-        System.out.println("texto de contenido: " + textAreaNumber.getText());
-        return textAreaNumber.getText();
+        System.out.println("texto de contenido: " + textAreaImput.getText());
+        return textAreaImput.getText();
     }
 
     public static void setTextColor(String text, Color color) {
-        StyledDocument doc = textAreaNumber.getStyledDocument();
+        StyledDocument doc = textAreaImput.getStyledDocument();
         Style style = doc.addStyle("coloredStyle", null);
         StyleConstants.setForeground(style, color);
 

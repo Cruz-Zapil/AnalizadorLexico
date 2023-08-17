@@ -30,8 +30,7 @@ public class PyAnalizable {
                 linea++;
             }
             //// se envia a Controlador de función de transición
-            controlFuncionTransicion.analizar(caracterActual); 
-          //  System.out.println("el envio: "+ caracterActual);               
+            controlFuncionTransicion.analizar(caracterActual);           
                         
         }
     }

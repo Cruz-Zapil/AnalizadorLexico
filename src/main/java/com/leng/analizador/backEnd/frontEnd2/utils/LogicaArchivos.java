@@ -19,9 +19,9 @@ public class LogicaArchivos {
     private String rutaFichero = "src/main/java/com/practica2/ficheros/";
 
 
-    public void fileChoser() {
+    public String fileChoser() {
 
-        String textoLeido;
+        String textoLeido="null";
         miBuscador = new JFileChooser(".");
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos de Python (.py)", "py");
 
@@ -29,23 +29,22 @@ public class LogicaArchivos {
 
         int valor = miBuscador.showOpenDialog(miBuscador);
         if (valor == JFileChooser.APPROVE_OPTION) {
-
+            textoLeido="";
             textoLeido = leerArchivoExterior(miBuscador.getSelectedFile().getAbsolutePath());
             System.out.println(miBuscador.getSelectedFile().getAbsolutePath());
             // areaText.setText(textoLeido);
         }
-
+        return textoLeido;
     }
 
     public String leerArchivoExterior(String ruta) {
 
-        System.out.println("ruta Exterior: " + ruta);
         FileReader lector = null;
         BufferedReader br = null;
         this.RUTA = ruta;
 
-        String lectura = " ";
-        String contenido = " ";
+        String lectura = "";
+        String contenido = "";
 
         try {
             lector = new FileReader(ruta);
@@ -57,9 +56,9 @@ public class LogicaArchivos {
             br.close();
             lector.close();
         } catch (FileNotFoundException e) {
-            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "No se encontro el archivo");
         } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, e, " Error", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Error al leer el archivo");
         }
         return contenido;
     }
